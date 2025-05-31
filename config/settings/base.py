@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'apps.users',
-    'apps.books'
+    'apps.books',
+    
 ]
 
 MIDDLEWARE = [
@@ -84,11 +86,11 @@ WSGI_APPLICATION = 'Book_review_api_backend.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config("DATABASE_NAME"),
-#         'USER':config("DATABASE_USER"),
-#         'PASSWORD': config("DATABASE_PASSWORD"),
-#         'HOST':"localhost",
-#         'PORT': 5432
+#         'NAME': config("POSTGRES_DB"),
+#         'USER':config("POSTGRES_USER"),
+#         'PASSWORD': 123456,
+#         'HOST': config("DB_HOST"),
+#         'PORT': config("DB_PORT")
 #     }
 # }
 
@@ -108,6 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "OPTIONS":{
+            "min_length":9,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -141,3 +146,14 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# List of passhord hashing algorithms
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
+]
