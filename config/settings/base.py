@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'apps.users',
-    'apps.books'
+    'apps.books',
+    
 ]
 
 MIDDLEWARE = [
@@ -84,11 +86,11 @@ WSGI_APPLICATION = 'Book_review_api_backend.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config("DATABASE_NAME"),
-#         'USER':config("DATABASE_USER"),
-#         'PASSWORD': config("DATABASE_PASSWORD"),
-#         'HOST':"localhost",
-#         'PORT': 5432
+#         'NAME': config("POSTGRES_DB"),
+#         'USER':config("POSTGRES_USER"),
+#         'PASSWORD': 123456,
+#         'HOST': config("DB_HOST"),
+#         'PORT': config("DB_PORT")
 #     }
 # }
 
